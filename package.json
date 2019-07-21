@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "npm install && node app.js"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "redux": "^4.0.4",
+    "react-redux": "^7.1.0"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.0.0",
+    "file-loader": "^4.0.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^2.0.1",
+    "webpack": "^4.35.3",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
