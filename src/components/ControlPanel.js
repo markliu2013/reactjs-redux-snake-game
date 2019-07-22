@@ -6,14 +6,14 @@ import GameSpeedSelect from './GameSpeedSelect'
 import ControlStatus from './ControlStatus'
 import GameInfo from './GameInfo'
 
-const ControlPanel = () => (
+const ControlPanel = ({snakeSpeedOptions, snakeSpeedValue, gridRowNumOptions, gridRowNumValue, gridColNumOptions, gridColNumValue }) => (
     <div className="controlPanel">
         <h2>Stopped</h2>
         <GameScore />
         <div className="gameInitControl">
-            <GridRowNumsSelect />
-            <GridColNumsSelect />
-            <GameSpeedSelect />
+            <GridRowNumsSelect options={gridRowNumOptions} value={gridRowNumValue} />
+            <GridColNumsSelect options={gridColNumOptions} value={gridColNumValue} />
+            <GameSpeedSelect options={snakeSpeedOptions} value={snakeSpeedValue} />
         </div>
         <ControlStatus />
         <GameInfo />

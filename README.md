@@ -13,6 +13,10 @@ var direction = 39;// direction of snake, init to right
 var moveThread = null;
 
 
+board gridRowNum gridColNum
+snake direction data speed
+food data
+
 component design:
 Game
 Board

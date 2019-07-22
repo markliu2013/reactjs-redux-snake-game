@@ -1,11 +1,13 @@
 import React from 'react';
 
-const GridColNumsSelect = () => (
+const GridColNumsSelect = ({options, value}) => (
     <div className="gridColNumsSelect">
-        <select>
-            <option value="30">30</option>
-            <option value="20">20</option>
-            <option value="10">10</option>
+        <select defaultValue={value}>
+            {options.map((option, i) => (
+                <option value={option} key={i}>
+                    {option}
+                </option>
+            ))}
         </select>
         <span>Columns</span>
     </div>
