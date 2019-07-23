@@ -1,7 +1,7 @@
 import React from 'react';
 
-const GameScore = () => (
-    <div className="gameScoreInfo"><span>Score: </span><strong>3</strong></div>
+const GameScore = ({ score }) => (
+    <div className="gameScoreInfo"><span>Score: </span><strong>{score}</strong></div>
 );
 
 export default GameScore;

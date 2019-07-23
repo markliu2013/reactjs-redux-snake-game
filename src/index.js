@@ -1,12 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
+import { createLogger } from 'redux-logger'
 import Game from './containers/Game';
-import reducer from './reducers'
-import './index.css'
+import reducer from './reducers';
+import sega from './segas';
+import './index.css';
 
-const store = createStore(reducer)
+const sagaMiddleware = createSagaMiddleware();
+const loggerMiddleware = createLogger()
+
+const store = createStore(
+    reducer
+    //applyMiddleware(loggerMiddleware)
+);
+
+//sagaMiddleware.run(sega);
 
 ReactDOM.render(
     <Provider store={store}>

@@ -1,6 +1,7 @@
 import path from 'path';
 
 module.exports = {
+    devtool: 'eval-source-map',
     mode: 'development',
     entry: [ path.resolve(__dirname, 'src', 'index.js') ],
     output: {

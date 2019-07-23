@@ -1,10 +1,11 @@
 import React from 'react';
+import { RUNNING, STOPPED } from '../constants/GameStatus';
 
-const ControlStatus = () => (
+const ControlStatus = ({ onRestartClick, onToggleClick, onResetClick, gameStatus }) => (
     <div className="controlButtons">
-        <button>Restart</button>
-        <button>Pause</button>
-        <button>Reset</button>
+        <button onClick={ onRestartClick }>Restart</button>
+        <button onClick={ onToggleClick }>{gameStatus === RUNNING ? 'Pause' : 'Continue'}</button>
+        <button onClick={ onResetClick }>Reset</button>
     </div>
 );
 

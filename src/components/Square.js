@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const Square = ({isOn}) => {
+const Square = ({isSnakeOn, isFoodOn}) => {
     let squareClass = classNames({
         square: true,
-        'on': isOn
+        'onSnake': isSnakeOn,
+        'onFood': isFoodOn
     });
     return (
         <div className={squareClass}></div>

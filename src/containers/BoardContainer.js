@@ -5,8 +5,8 @@ import Board from '../components/Board';
 
 const mapStateToProps = (state) => {
     return ({
-        gridRowNum: configs.gridRowNumOptions[state.board.gridRowNum],
-        gridColNum: configs.gridRowNumOptions[state.board.gridColNum],
+        gridRowNum: state.board.gridRowNum,
+        gridColNum: state.board.gridColNum,
         snakeData: state.snake.data,
         foodData: state.food.data
     })

@@ -40,13 +40,17 @@ a:hover {
 .boardWrapper .square {
     background: #fff;
 }
-.boardWrapper .square.on {
+.boardWrapper .square.onSnake {
     background: #000;
+}
+.boardWrapper .square.onFood {
+    background: #0a0;
 }
 .controlPanel h2 {
     margin: 0 0 30px 0;
     text-align: center;
     font-size: 30px;
+    text-transform: capitalize;
 }
 .gameScoreInfo {
     display: flex;
@@ -74,7 +78,4 @@ a:hover {
 .controlButtons {
     display: flex;
     justify-content: space-between;
-}
-.controlButtons button {
-    width: 65px;
 }
