@@ -13,11 +13,11 @@ const sagaMiddleware = createSagaMiddleware();
 const loggerMiddleware = createLogger()
 
 const store = createStore(
-    reducer
-    //applyMiddleware(loggerMiddleware)
+    reducer,
+    applyMiddleware(sagaMiddleware)
 );
 
-//sagaMiddleware.run(sega);
+sagaMiddleware.run(sega);
 
 ReactDOM.render(
     <Provider store={store}>

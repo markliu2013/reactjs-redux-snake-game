@@ -8,29 +8,30 @@ import GameInfo from './GameInfo'
 
 export default class ControlPanel extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.gridRowNumsRef = React.createRef();
-        this.gridColNumsRef = React.createRef();
-        this.gameSpeedRef = React.createRef();
+    handleGridRowNumControlChange = (value) => {
+        this.props.onGridRowNumControlChange(value);
     }
 
-    handleRestartClick = () => {
-        this.props.onRestartClick(this.gridRowNumsRef.current.value, this.gridColNumsRef.current.value, this.gameSpeedRef.current.value)
+    handleGridColNumControlChange = (value) => {
+        this.props.onGridColNumControlChange(value);
+    }
+
+    handleSnakeSpeedControlChange = (value) => {
+        this.props.onSnakeSpeedControlChange(value);
     }
 
     render() {
-        const { gridRowNumOptions, gridRowNum, gridColNumOptions, gridColNum, snakeSpeedOptions, snakeSpeed, score, gameStatus } = this.props;
+        const { gridRowNumOptions, gridRowNumControl, gridColNumOptions, gridColNumControl, snakeSpeedOptions, snakeSpeedControl, score, gameStatus } = this.props;
         return (
             <div className="controlPanel">
                 <h2>{gameStatus}</h2>
                 <GameScore score = {score} />
                 <div className="gameInitControl">
-                    <GridRowNumsSelect options={gridRowNumOptions} value={gridRowNum} innerRef={this.gridRowNumsRef} />
-                    <GridColNumsSelect options={gridColNumOptions} value={gridColNum} innerRef={this.gridColNumsRef} />
-                    <GameSpeedSelect options={snakeSpeedOptions} value={snakeSpeed} innerRef={this.gameSpeedRef} />
+                    <GridRowNumsSelect options={gridRowNumOptions} value={gridRowNumControl} onChange={this.handleGridRowNumControlChange} />
+                    <GridColNumsSelect options={gridColNumOptions} value={gridColNumControl} onChange={this.handleGridColNumControlChange} />
+                    <GameSpeedSelect options={snakeSpeedOptions} value={snakeSpeedControl} onChange={this.handleSnakeSpeedControlChange} />
                 </div>
-                <ControlStatus gameStatus={gameStatus} onRestartClick={this.handleRestartClick} onToggleClick={this.props.onToggleClick} onResetClick={this.props.onResetClick} />
+                <ControlStatus gameStatus={gameStatus} onRestartClick={this.props.onRestartClick} onToggleClick={this.props.onToggleClick} onResetClick={this.props.onResetClick} />
                 <GameInfo />
             </div>
         );

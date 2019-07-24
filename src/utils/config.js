@@ -3,13 +3,6 @@ import * as directions from '../constants/Directions';
 import * as configs from '../constants/Config';
 import { getRandomInt } from '../utils/math';
 
-export function getFoodData(gridRowNum, gridColNum, snakeData = getInitialState().snake.data) {
-    const squareNums = gridRowNum * gridColNum;
-    const squareArr = [...Array(squareNums).keys()];
-    const foodArr = squareArr.filter((i)=>{return !snakeData.includes(i)});
-    return getRandomInt(0, foodArr.length);
-}
-
 export function getInitialState() {
     let initialState = {
         board: {
@@ -23,7 +16,7 @@ export function getInitialState() {
             status: STOPPED
         },
         snake: {
-            direction: directions.LEFT,
+            direction: directions.RIGHT,
             data: [0, 1, 2],
             speedValue: 50 // match speedOptions index, it is level
         },
@@ -33,6 +26,7 @@ export function getInitialState() {
             snakeSpeedValue: 50
         }
     }
-    initialState.food.data = getFoodData(initialState.board.gridRowNum, initialState.board.gridColNum, initialState.snake.data);
+    // TODO init food with saga
+    // initialState.food.data = getFoodData(initialState.board.gridRowNum, initialState.board.gridColNum, initialState.snake.data);
     return initialState;
 }

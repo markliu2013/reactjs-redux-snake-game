@@ -31,7 +31,7 @@ class Game extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onKeyPress: (code) => {console.log(code)},
+        onKeyPress: (code) => {},
     }
 }
 

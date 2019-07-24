@@ -4,12 +4,21 @@ import { snakeGo } from '../actions';
 
 class SnakeTimer extends React.Component {
 
-    componentDidMount() {
+    setTimer() {
+        if (this.timerID) clearInterval(this.timerID);
         const { snakeSpeed, onSnakeGo } = this.props;
         this.timerID = setInterval(
             onSnakeGo,
             snakeSpeed
         );
+    }
+
+    componentDidMount() {
+        this.setTimer();
+    }
+
+    componentDidUpdate() {
+        this.setTimer();
     }
 
     componentWillUnmount() {

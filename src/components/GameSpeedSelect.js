@@ -1,9 +1,9 @@
 import React from 'react';
 
-const GameSpeedSelect = ({options, value, innerRef}) => (
+const GameSpeedSelect = ({options, value, onChange}) => (
     <div className="gameSpeedSelect">
         <span>Speed</span>
-        <select defaultValue={value} ref={innerRef}>
+        <select value={value} onChange={e => onChange(e.target.value)}>
             {options.map((option, i) => (
                 <option value={option} key={i}>
                     {i+1}

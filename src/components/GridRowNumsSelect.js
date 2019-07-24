@@ -1,8 +1,8 @@
 import React from 'react';
 
-const GridRowNumsSelect = ({options, value, innerRef}) => (
+const GridRowNumsSelect = ({options, value, onChange}) => (
     <div className="gridRowNumsSelect">
-        <select defaultValue={value} ref={innerRef}>
+        <select value={value} onChange={e => onChange(e.target.value)}>
             {options.map((option, i) => (
                 <option value={option} key={i}>
                     {option}
