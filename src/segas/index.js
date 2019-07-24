@@ -2,7 +2,7 @@ import { call, delay, put, select, all, takeEvery } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
 import { restartGameWithFood, resetGameWithFood } from '../actions';
 import * as selectors from '../selectors';
-import { getRandomInt } from '../utils/math';
+import { getRandomInt } from '../utils';
 
 function getFoodData(gridRowNum, gridColNum, snakeData) {
     const squareNums = gridRowNum * gridColNum;

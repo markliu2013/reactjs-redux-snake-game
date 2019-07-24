@@ -83,6 +83,11 @@ export default function rootReducer(state = initialState, action) {
             nextState.snake.data = nextSnakeData;
             return nextState;
         }
+        case actionTypes.CHANGE_DIRECTION: {
+            let nextState = Object.assign({}, state);
+            nextState.snake.direction = action.value;
+            return nextState;
+        }
         default:
             return state
     }

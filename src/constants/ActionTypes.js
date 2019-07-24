@@ -9,4 +9,4 @@ export const CHANGE_GRID_COL_NUM = 'CHANGE_GRID_COL_NUM';
 export const CHANGE_SNAKE_SPEED = 'CHANGE_SNAKE_SPEED';
 
 export const SNAKE_GO = 'SNAKE_GO';
-export const MOVE_UP = 'MOVE_UP';
+export const CHANGE_DIRECTION = 'CHANGE_DIRECTION';

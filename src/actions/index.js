@@ -26,4 +26,7 @@ export const changeSnakeSpeedControl = (value) => ({
 })
 
 export const snakeGo = () => ({ type: types.SNAKE_GO });
-export const moveUp = () => ({ type: types.MOVE_UP });
+export const changeDirection = (value) => ({
+    type: types.CHANGE_DIRECTION,
+    value: value
+});

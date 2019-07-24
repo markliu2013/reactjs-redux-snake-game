@@ -1,7 +1,6 @@
 import { RUNNING, STOPPED } from '../constants/GameStatus';
 import * as directions from '../constants/Directions';
 import * as configs from '../constants/Config';
-import { getRandomInt } from '../utils/math';
 
 export function getInitialState() {
     let initialState = {

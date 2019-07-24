@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import BoardContainer from "./BoardContainer";
 import ControlPanelContainer from "./ControlPanelContainer";
 import SnakeTimer from "./SnakeTimer";
+import { keyCodeToDirection } from "../utils"
+import { changeDirection } from '../actions';
 
 class Game extends React.Component {
 
@@ -31,7 +33,9 @@ class Game extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onKeyPress: (code) => {},
+        onKeyPress: (value) => {
+            dispatch(changeDirection(keyCodeToDirection(value)))
+        }
     }
 }
 
