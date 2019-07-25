@@ -1,6 +1,6 @@
 import { call, delay, put, select, all, takeEvery } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { restartGameWithFood, resetGameWithFood, overGame, snakeGo, eatFood, createFood } from '../actions';
+import { restartGame, overGame, snakeGo, eatFood, createFood, createFoodWithData } from '../actions';
 import * as selectors from '../selectors';
 import { getRandomInt } from '../utils';
 import { RUNNING, STOPPED, OVER } from '../constants/GameStatus';
@@ -14,11 +14,10 @@ function getFoodData(gridRowNum, gridColNum, snakeData) {
 }
 
 function* restartGameSaga(action) {
-    // TODO to be template
-    const gridRowNum = yield select(selectors.gridRowNumControl);
-    const gridColNum = yield select(selectors.gridColNumControl);
-    const snakeData = yield select(selectors.snakeData);
-    yield put(restartGameWithFood(getFoodData(gridRowNum, gridColNum, snakeData)));
+    if (!action['@@redux-saga/SAGA_ACTION']) {
+        yield put(restartGame());
+        yield put(createFood());
+    }
 }
 
 function* watchRestartGame() {
@@ -88,11 +87,23 @@ function* snakeGoBefore(action) {
     }
 }
 
+function* createFoodSaga(action) {
+    const gridRowNum = yield select(selectors.gridRowNum);
+    const gridColNum = yield select(selectors.gridColNum);
+    const snakeData = yield select(selectors.snakeData);
+    yield put(createFoodWithData(getFoodData(gridRowNum, gridColNum, snakeData)));
+}
+
+function* watchCreateFood() {
+    yield takeEvery(types.CREATE_FOOD, createFoodSaga)
+}
+
 export default function* rootSaga() {
     yield all([
         watchRestartGame(),
         watchResetGame(),
-        watchSnakeGo()
+        watchSnakeGo(),
+        watchCreateFood()
     ])
 }
 

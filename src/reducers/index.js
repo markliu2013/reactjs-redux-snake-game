@@ -8,13 +8,12 @@ const initialState = getInitialState();
 
 export default function rootReducer(state = initialState, action) {
     switch (action.type) {
-        case actionTypes.RESTART_GAME_WITH_FOOD: {
+        case actionTypes.RESTART_GAME: {
             let nextState = Object.assign({}, state);
             let initialState = getInitialState();
             nextState.board.gridColNum = state.control.gridColNum;
             nextState.board.gridRowNum = state.control.gridRowNum;
             nextState.snake.speedValue = state.control.snakeSpeedValue;
-            nextState.food.data = action.foodData;
             nextState.snake.data = initialState.snake.data;
             nextState.snake.direction = initialState.snake.direction;
             nextState.game.status = RUNNING;
@@ -66,7 +65,7 @@ export default function rootReducer(state = initialState, action) {
             nextState.snake.data = nextSnakeData;
             return nextState;
         }
-        case actionTypes.CREATE_FOOD: {
+        case actionTypes.CREATE_FOOD_WITH_DATA: {
             let nextState = Object.assign({}, state);
             nextState.food.data = action.value;
             return nextState;

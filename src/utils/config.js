@@ -9,7 +9,7 @@ export function getInitialState() {
             gridRowNum: 30
         },
         food: {
-            data: 20
+            data: -1
         },
         game: {
             status: STOPPED

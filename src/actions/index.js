@@ -1,16 +1,8 @@
 import * as types from '../constants/ActionTypes';
 
 export const restartGame = () => ({ type: types.RESTART_GAME });
-export const restartGameWithFood = (foodData) => ({
-    type: types.RESTART_GAME_WITH_FOOD,
-    foodData:  foodData
-});
 export const toggleGame = () => ({ type: types.TOGGLE_GAME });
 export const resetGame = () => ({ type: types.RESET_GAME });
-export const resetGameWithFood = (foodData) => ({
-    type: types.RESET_GAME_WITH_FOOD,
-    foodData:  foodData
-});
 export const overGame = () => ({ type: types.OVER_GAME });
 
 export const changeGridRowNumControl = (value) => ({
@@ -32,8 +24,9 @@ export const snakeGo = (value) => ({
     value: value
 });
 export const eatFood = () => ({ type: types.EAT_FOOD });
-export const createFood = (value) => ({
-    type: types.CREATE_FOOD,
+export const createFood = (value) => ({ type: types.CREATE_FOOD });
+export const createFoodWithData = (value) => ({
+    type: types.CREATE_FOOD_WITH_DATA,
     value: value
 });
 
