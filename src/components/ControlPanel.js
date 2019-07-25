@@ -35,7 +35,8 @@ export default class ControlPanel extends React.Component {
                 <ControlStatus gameStatus={gameStatus}
                                onRestartClick={this.props.onRestartClick}
                                onToggleClick={this.props.onToggleClick}
-                               onResetClick={this.props.onResetClick} />
+                               onResetClick={this.props.onResetClick}
+                               onReviveClick={this.props.onReviveClick} />
                 <ControlData onSave={this.props.onSaveClick} onLoad={this.props.onLoadClick} />
                 <GameInfo />
             </div>

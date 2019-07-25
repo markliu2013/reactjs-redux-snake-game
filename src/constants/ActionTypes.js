@@ -4,6 +4,7 @@ export const TOGGLE_GAME = 'TOGGLE_GAME';
 export const RESET_GAME = 'RESET_GAME';
 export const RESET_GAME_BEFORE = 'RESET_GAME_BEFORE';
 export const OVER_GAME = 'OVER_GAME';
+export const REVIVE_GAME = 'REVIVE_GAME';
 
 export const CHANGE_GRID_ROW_NUM = 'CHANGE_GRID_ROW_NUM';
 export const CHANGE_GRID_COL_NUM = 'CHANGE_GRID_COL_NUM';

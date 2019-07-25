@@ -47,7 +47,8 @@ function* snakeGoSaga(action) {
                 break;
             case DOWN:
                 nextGrid = snakeHead + gridColNum;
-                if (nextGrid > gridNum) hitFlag = true;
+                // be careful, gridNum-1
+                if (nextGrid > gridNum-1) hitFlag = true;
                 break;
             case LEFT:
                 if (snakeHead % gridColNum === 0) hitFlag = true;
@@ -61,7 +62,6 @@ function* snakeGoSaga(action) {
                 break;
         }
         if (snakeData.includes(nextGrid)) hitFlag = true;
-
         if (hitFlag) {
             yield put(overGame());
         } else {

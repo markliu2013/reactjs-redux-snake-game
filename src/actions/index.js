@@ -6,6 +6,7 @@ export const toggleGame = () => ({ type: types.TOGGLE_GAME });
 export const resetGame = () => ({ type: types.RESET_GAME });
 export const resetGameBefore = () => ({ type: types.RESET_GAME_BEFORE });
 export const overGame = () => ({ type: types.OVER_GAME });
+export const reviveGame = () => ({ type: types.REVIVE_GAME });
 
 export const changeGridRowNumControl = (value) => ({
     type: types.CHANGE_GRID_ROW_NUM,

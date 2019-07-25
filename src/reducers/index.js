@@ -34,6 +34,50 @@ export default function rootReducer(state = initialState, action) {
             nextState.game.status = OVER;
             return nextState;
         }
+        case actionTypes.REVIVE_GAME: {
+            let nextState = Object.assign({}, state);
+            const snakeHead = Number(state.snake.data[state.snake.data.length-1]);
+            const gridRowNum = Number(state.board.gridRowNum);
+            const gridColNum = Number(state.board.gridColNum);
+
+            switch (state.snake.direction) {
+                case UP:
+                    if (snakeHead < gridColNum / 2) {
+                        nextState.snake.direction = RIGHT;
+                    } else {
+                        nextState.snake.direction = LEFT;
+                    }
+                    break;
+                case RIGHT:
+                    // which row
+                    if (snakeHead / gridColNum < gridRowNum / 2) {
+                        nextState.snake.direction = DOWN;
+                    } else {
+                        nextState.snake.direction = UP;
+                    }
+                    break;
+                case DOWN:
+                    // which col
+                    if (snakeHead % gridColNum < gridColNum / 2) {
+                        nextState.snake.direction = RIGHT;
+                    } else {
+                        nextState.snake.direction = LEFT;
+                    }
+                    break;
+                case LEFT:
+                    // which row
+                    if (snakeHead / gridColNum < gridRowNum / 2) {
+                        nextState.snake.direction = DOWN;
+                    } else {
+                        nextState.snake.direction = UP;
+                    }
+                    break;
+                default :
+                    break;
+            }
+            nextState.game.status = RUNNING;
+            return nextState;
+        }
         case actionTypes.CHANGE_GRID_ROW_NUM: {
             // TODO shallow? deep?
             let nextState = Object.assign({}, state);
@@ -51,6 +95,7 @@ export default function rootReducer(state = initialState, action) {
             return nextState;
         }
         case actionTypes.SNAKE_GO_WITH_DATA: {
+            if (state.game.status !== RUNNING) return state;
             let nextState = Object.assign({}, state);
             let nextSnakeData = state.snake.data.slice();
             nextSnakeData.shift();
@@ -59,6 +104,7 @@ export default function rootReducer(state = initialState, action) {
             return nextState;
         }
         case actionTypes.EAT_FOOD: {
+            if (state.game.status !== RUNNING) return state;
             let nextState = Object.assign({}, state);
             let nextSnakeData = state.snake.data.slice();
             nextSnakeData.push(state.food.data);
@@ -71,6 +117,7 @@ export default function rootReducer(state = initialState, action) {
             return nextState;
         }
         case actionTypes.CHANGE_DIRECTION: {
+            if (state.game.status !== RUNNING) return state;
             if (state.snake.direction === LEFT && action.value === RIGHT) return state;
             if (state.snake.direction === RIGHT && action.value === LEFT) return state;
             if (state.snake.direction === UP && action.value === DOWN) return state;
