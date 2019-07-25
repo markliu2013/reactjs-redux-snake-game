@@ -20,9 +20,9 @@ export const changeSnakeSpeedControl = (value) => ({
     value: value
 })
 
-export const snakeGoBefore = () => ({ type: types.SNAKE_GO_BEFORE });
-export const snakeGo = (value) => ({
-    type: types.SNAKE_GO,
+export const snakeGo = () => ({ type: types.SNAKE_GO });
+export const snakeGoWithData = (value) => ({
+    type: types.SNAKE_GO_WITH_DATA,
     value: value
 });
 export const eatFood = () => ({ type: types.EAT_FOOD });

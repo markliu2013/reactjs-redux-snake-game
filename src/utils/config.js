@@ -17,12 +17,12 @@ export function getInitialState() {
         snake: {
             direction: directions.RIGHT,
             data: [0, 1, 2],
-            speedValue: 50 // match speedOptions index, it is level
+            speedValue: 500 // match speedOptions index, it is level
         },
         control: {
             gridColNum: 30,
             gridRowNum: 30,
-            snakeSpeedValue: 50
+            snakeSpeedValue: 500
         }
     }
     // TODO init food with saga

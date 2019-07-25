@@ -4,7 +4,7 @@ import BoardContainer from "./BoardContainer";
 import ControlPanelContainer from "./ControlPanelContainer";
 import SnakeTimer from "./SnakeTimer";
 import { keyCodeToDirection } from "../utils"
-import { changeDirection, createFood } from '../actions';
+import { changeDirection, createFood, snakeGo } from '../actions';
 
 class Game extends React.Component {
 
@@ -35,7 +35,10 @@ class Game extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         onKeyPress: (value) => {
-            dispatch(changeDirection(keyCodeToDirection(value)))
+            dispatch(changeDirection(keyCodeToDirection(value)));
+            // when you change direction, move one step immediately.
+            // keep Pressing the arrow key, snake will keep moving.
+            dispatch(snakeGo());
         },
         onLoaded: () => {
             dispatch(createFood())

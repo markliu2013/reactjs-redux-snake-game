@@ -50,7 +50,7 @@ export default function rootReducer(state = initialState, action) {
             nextState.control.snakeSpeedValue = action.value;
             return nextState;
         }
-        case actionTypes.SNAKE_GO: {
+        case actionTypes.SNAKE_GO_WITH_DATA: {
             let nextState = Object.assign({}, state);
             let nextSnakeData = state.snake.data.slice();
             nextSnakeData.shift();

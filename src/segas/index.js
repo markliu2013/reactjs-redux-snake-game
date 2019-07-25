@@ -1,6 +1,6 @@
 import { call, delay, put, select, all, takeEvery } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { restartGameBefore, resetGameBefore, overGame, snakeGo, eatFood, createFood, createFoodWithData } from '../actions';
+import { restartGameBefore, resetGameBefore, overGame, snakeGoWithData, eatFood, createFood, createFoodWithData } from '../actions';
 import * as selectors from '../selectors';
 import { getRandomInt } from '../utils';
 import { RUNNING, STOPPED, OVER } from '../constants/GameStatus';
@@ -25,11 +25,10 @@ function* watchResetGame() {
 }
 
 function* watchSnakeGo() {
-    yield takeEvery(types.SNAKE_GO_BEFORE, snakeGoBefore)
+    yield takeEvery(types.SNAKE_GO, snakeGoSaga)
 }
 
-function* snakeGoBefore(action) {
-
+function* snakeGoSaga(action) {
     const gameStatus = yield select(selectors.gameStatus);
     if (gameStatus === RUNNING) {
         const gridRowNum = yield select(selectors.gridRowNum);
@@ -70,7 +69,7 @@ function* snakeGoBefore(action) {
                 yield put(eatFood());
                 yield put(createFood());
             } else {
-                yield put(snakeGo(nextGrid));
+                yield put(snakeGoWithData(nextGrid));
             }
         }
     }
