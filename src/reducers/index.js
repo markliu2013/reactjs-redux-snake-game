@@ -79,6 +79,9 @@ export default function rootReducer(state = initialState, action) {
             nextState.snake.direction = action.value;
             return nextState;
         }
+        case actionTypes.LOAD_STATE_WITH_DATA: {
+            return action.value;
+        }
         default:
             return state
     }

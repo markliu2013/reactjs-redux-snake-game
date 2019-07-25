@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as configs from '../constants/Config';
 import ControlPanel from '../components/ControlPanel';
-import { restartGame, toggleGame, resetGame, changeGridRowNumControl, changeGridColNumControl, changeSnakeSpeedControl } from '../actions';
+import { restartGame, toggleGame, resetGame, changeGridRowNumControl, changeGridColNumControl, changeSnakeSpeedControl, saveState, loadState } from '../actions';
 
 const mapStateToProps = (state) => ({
     gridRowNumOptions: configs.gridRowNumOptions,
@@ -22,7 +22,9 @@ const mapDispatchToProps = (dispatch) => {
         onSnakeSpeedControlChange: (value) => {dispatch(changeSnakeSpeedControl(value))},
         onRestartClick: () => {dispatch(restartGame())},
         onToggleClick: () => {dispatch(toggleGame())},
-        onResetClick: () => {dispatch(resetGame())}
+        onResetClick: () => {dispatch(resetGame())},
+        onSaveClick: () => {dispatch(saveState())},
+        onLoadClick: () => {dispatch(loadState())}
     }
 }
 

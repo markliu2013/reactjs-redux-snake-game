@@ -1,3 +1,4 @@
+export const stateJson = (state) => JSON.stringify(state);
 export const snakeSpeedValue = (state) => Number(state.snake.speedValue);
 export const gameStatus = (state) => state.game.status;
 export const snakeData = (state) => state.snake.data;

@@ -1,10 +1,11 @@
 import { call, delay, put, select, all, takeEvery } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { restartGameBefore, resetGameBefore, overGame, snakeGoWithData, eatFood, createFood, createFoodWithData } from '../actions';
+import { restartGameBefore, resetGameBefore, overGame, snakeGoWithData, eatFood, createFood, createFoodWithData, loadStateWithData } from '../actions';
 import * as selectors from '../selectors';
 import { getRandomInt } from '../utils';
 import { RUNNING, STOPPED, OVER } from '../constants/GameStatus';
-import { LEFT, RIGHT, UP, DOWN } from "../constants/Directions";
+import { LEFT, RIGHT, UP, DOWN } from '../constants/Directions';
+import { saveState, loadState } from '../utils/localStorage'
 
 function* restartGameSaga(action) {
     yield put(restartGameBefore());
@@ -89,12 +90,32 @@ function* watchCreateFood() {
     yield takeEvery(types.CREATE_FOOD, createFoodSaga)
 }
 
+function* saveStateSaga(action) {
+    const stateJson = yield select(selectors.stateJson);
+    saveState(stateJson);
+}
+
+function* watchSaveState() {
+    yield takeEvery(types.SAVE_STATE, saveStateSaga)
+}
+
+function* loadStateSaga(action) {
+    const json = yield call(loadState);
+    yield put(loadStateWithData(json));
+}
+
+function* watchLoadState() {
+    yield takeEvery(types.LOAD_STATE, loadStateSaga)
+}
+
 export default function* rootSaga() {
     yield all([
         watchRestartGame(),
         watchResetGame(),
         watchSnakeGo(),
-        watchCreateFood()
+        watchCreateFood(),
+        watchSaveState(),
+        watchLoadState()
     ])
 }
 

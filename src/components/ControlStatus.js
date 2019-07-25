@@ -6,6 +6,7 @@ const ControlStatus = ({ onRestartClick, onToggleClick, onResetClick, gameStatus
         <button onClick={ onRestartClick }>Restart</button>
         <button onClick={ onToggleClick } disabled={gameStatus === OVER}>{gameStatus === RUNNING ? 'Pause' : 'Continue'}</button>
         <button onClick={ onResetClick }>Reset</button>
+        <button>Revive</button>
     </div>
 );
 

@@ -1,10 +1,11 @@
 import React from 'react';
-import GameScore from './GameScore'
-import GridRowNumsSelect from './GridRowNumsSelect'
-import GridColNumsSelect from './GridColNumsSelect'
-import GameSpeedSelect from './GameSpeedSelect'
-import ControlStatus from './ControlStatus'
-import GameInfo from './GameInfo'
+import GameScore from './GameScore';
+import GridRowNumsSelect from './GridRowNumsSelect';
+import GridColNumsSelect from './GridColNumsSelect';
+import GameSpeedSelect from './GameSpeedSelect';
+import ControlStatus from './ControlStatus';
+import ControlData from './ControlData';
+import GameInfo from './GameInfo';
 
 export default class ControlPanel extends React.Component {
 
@@ -31,7 +32,11 @@ export default class ControlPanel extends React.Component {
                     <GridColNumsSelect options={gridColNumOptions} value={gridColNumControl} onChange={this.handleGridColNumControlChange} />
                     <GameSpeedSelect options={snakeSpeedOptions} value={snakeSpeedControl} onChange={this.handleSnakeSpeedControlChange} />
                 </div>
-                <ControlStatus gameStatus={gameStatus} onRestartClick={this.props.onRestartClick} onToggleClick={this.props.onToggleClick} onResetClick={this.props.onResetClick} />
+                <ControlStatus gameStatus={gameStatus}
+                               onRestartClick={this.props.onRestartClick}
+                               onToggleClick={this.props.onToggleClick}
+                               onResetClick={this.props.onResetClick} />
+                <ControlData onSave={this.props.onSaveClick} onLoad={this.props.onLoadClick} />
                 <GameInfo />
             </div>
         );

@@ -36,3 +36,10 @@ export const changeDirection = (value) => ({
     type: types.CHANGE_DIRECTION,
     value: value
 });
+
+export const saveState = () => ({ type: types.SAVE_STATE });
+export const loadState = () => ({ type: types.LOAD_STATE });
+export const loadStateWithData = (value) => ({
+    type: types.LOAD_STATE_WITH_DATA,
+    value: value
+});

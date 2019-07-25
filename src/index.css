@@ -33,7 +33,7 @@ a:hover {
 }
 .controlPanel {
     padding: 20px 10px 0 10px;
-    width: 250px;
+    width: 270px;
     height: 500px;
     border: 1px solid #000;
 }
@@ -75,7 +75,11 @@ a:hover {
 .gameInitControl span {
     margin-right: 5px;
 }
+.gameInitControl {
+    margin-bottom: 10px;
+}
 .controlButtons {
     display: flex;
-    justify-content: space-between;
+    margin-bottom: 10px;
+    justify-content: space-evenly;
 }

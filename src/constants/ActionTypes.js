@@ -15,3 +15,7 @@ export const EAT_FOOD = 'EAT_FOOD';
 export const CREATE_FOOD = 'CREATE_FOOD';
 export const CREATE_FOOD_WITH_DATA = 'CREATE_FOOD_WITH_DATA';
 export const CHANGE_DIRECTION = 'CHANGE_DIRECTION';
+
+export const SAVE_STATE = 'SAVE_STATE';
+export const LOAD_STATE = 'LOAD_STATE';
+export const LOAD_STATE_WITH_DATA = 'LOAD_STATE_WITH_DATA';
