@@ -1,23 +1,13 @@
-# reactjs-redux-snake-game
-ReactJS Redux Snake Game
+# ReactJS Redux Snake Game
+This project is snake game using ReactJS, Redux, redux-saga.
 
-state design:
-var gameState = 1;// game status  1 stopped  2 running  3 paused
-var gridRowNum = 30;
-var gridColNum = 30;
-var speed = 200;// speed,  the milliseconds to move a grid
-var snakeArr = null;// the coordinates snake holding
-var food = null;// the coordinate food holding
-var direction = 39;// direction of snake, init to right
+## Installing
 
-var moveThread = null;
+### Running
+You need install node and npm before you run it.
 
-
-board gridRowNum gridColNum
-snake direction data speed
-food data
-
-component design:
-Game
-Board
-game-info
+```sh
+  $ git clone https://github.com/markliu2013/reactjs-redux-snake-game.git
+  $ cd reactjs-redux-snake-game
+  $ npm start
+```
