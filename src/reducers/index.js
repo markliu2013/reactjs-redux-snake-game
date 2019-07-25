@@ -8,7 +8,7 @@ const initialState = getInitialState();
 
 export default function rootReducer(state = initialState, action) {
     switch (action.type) {
-        case actionTypes.RESTART_GAME: {
+        case actionTypes.RESTART_GAME_BEFORE: {
             let nextState = Object.assign({}, state);
             let initialState = getInitialState();
             nextState.board.gridColNum = state.control.gridColNum;
@@ -24,7 +24,7 @@ export default function rootReducer(state = initialState, action) {
             nextState.game.status = state.game.status === RUNNING ? STOPPED : RUNNING;
             return nextState;
         }
-        case actionTypes.RESET_GAME_WITH_FOOD: {
+        case actionTypes.RESET_GAME_BEFORE: {
             let nextState = Object.assign({}, getInitialState());
             nextState.food.data = action.foodData;
             return nextState;

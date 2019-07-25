@@ -1,23 +1,14 @@
 import { call, delay, put, select, all, takeEvery } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { restartGame, overGame, snakeGo, eatFood, createFood, createFoodWithData } from '../actions';
+import { restartGameBefore, resetGameBefore, overGame, snakeGo, eatFood, createFood, createFoodWithData } from '../actions';
 import * as selectors from '../selectors';
 import { getRandomInt } from '../utils';
 import { RUNNING, STOPPED, OVER } from '../constants/GameStatus';
 import { LEFT, RIGHT, UP, DOWN } from "../constants/Directions";
 
-function getFoodData(gridRowNum, gridColNum, snakeData) {
-    const squareNums = gridRowNum * gridColNum;
-    const squareArr = [...Array(squareNums).keys()];
-    const foodArr = squareArr.filter((i)=>{return !snakeData.includes(i)});
-    return getRandomInt(0, foodArr.length);
-}
-
 function* restartGameSaga(action) {
-    if (!action['@@redux-saga/SAGA_ACTION']) {
-        yield put(restartGame());
-        yield put(createFood());
-    }
+    yield put(restartGameBefore());
+    yield put(createFood());
 }
 
 function* watchRestartGame() {
@@ -25,10 +16,8 @@ function* watchRestartGame() {
 }
 
 function* resetGameSaga(action) {
-    const gridRowNum = yield select(selectors.gridRowNum);
-    const gridColNum = yield select(selectors.gridColNum);
-    const snakeData = yield select(selectors.snakeData);
-    yield put(resetGameWithFood(getFoodData(gridRowNum, gridColNum, snakeData)));
+    yield put(resetGameBefore());
+    yield put(createFood());
 }
 
 function* watchResetGame() {
@@ -79,7 +68,7 @@ function* snakeGoBefore(action) {
             const foodData = yield select(selectors.foodData);
             if (nextGrid === foodData) {
                 yield put(eatFood());
-                yield put(createFood(getFoodData(gridRowNum, gridColNum, snakeData)));
+                yield put(createFood());
             } else {
                 yield put(snakeGo(nextGrid));
             }
@@ -91,7 +80,10 @@ function* createFoodSaga(action) {
     const gridRowNum = yield select(selectors.gridRowNum);
     const gridColNum = yield select(selectors.gridColNum);
     const snakeData = yield select(selectors.snakeData);
-    yield put(createFoodWithData(getFoodData(gridRowNum, gridColNum, snakeData)));
+    const squareNums = gridRowNum * gridColNum;
+    const squareArr = [...Array(squareNums).keys()];
+    const foodArr = squareArr.filter((i)=>{return !snakeData.includes(i)});
+    yield put(createFoodWithData(getRandomInt(0, foodArr.length)));
 }
 
 function* watchCreateFood() {

@@ -1,6 +1,8 @@
 export const RESTART_GAME = 'RESTART_GAME';
+export const RESTART_GAME_BEFORE = 'RESTART_GAME_BEFORE';
 export const TOGGLE_GAME = 'TOGGLE_GAME';
 export const RESET_GAME = 'RESET_GAME';
+export const RESET_GAME_BEFORE = 'RESET_GAME_BEFORE';
 export const OVER_GAME = 'OVER_GAME';
 
 export const CHANGE_GRID_ROW_NUM = 'CHANGE_GRID_ROW_NUM';

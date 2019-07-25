@@ -4,7 +4,7 @@ import BoardContainer from "./BoardContainer";
 import ControlPanelContainer from "./ControlPanelContainer";
 import SnakeTimer from "./SnakeTimer";
 import { keyCodeToDirection } from "../utils"
-import { changeDirection } from '../actions';
+import { changeDirection, createFood } from '../actions';
 
 class Game extends React.Component {
 
@@ -14,6 +14,7 @@ class Game extends React.Component {
 
     componentDidMount() {
         document.addEventListener('keydown', this.handleKeyPress);
+        this.props.onLoaded();
     }
 
     componentWillUnmount() {
@@ -35,6 +36,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onKeyPress: (value) => {
             dispatch(changeDirection(keyCodeToDirection(value)))
+        },
+        onLoaded: () => {
+            dispatch(createFood())
         }
     }
 }

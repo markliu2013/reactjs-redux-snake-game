@@ -1,8 +1,10 @@
 import * as types from '../constants/ActionTypes';
 
 export const restartGame = () => ({ type: types.RESTART_GAME });
+export const restartGameBefore = () => ({ type: types.RESTART_GAME_BEFORE });
 export const toggleGame = () => ({ type: types.TOGGLE_GAME });
 export const resetGame = () => ({ type: types.RESET_GAME });
+export const resetGameBefore = () => ({ type: types.RESET_GAME_BEFORE });
 export const overGame = () => ({ type: types.OVER_GAME });
 
 export const changeGridRowNumControl = (value) => ({
