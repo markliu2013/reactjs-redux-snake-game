@@ -11,6 +11,7 @@ export const resetGameWithFood = (foodData) => ({
     type: types.RESET_GAME_WITH_FOOD,
     foodData:  foodData
 });
+export const overGame = () => ({ type: types.OVER_GAME });
 
 export const changeGridRowNumControl = (value) => ({
     type: types.CHANGE_GRID_ROW_NUM,
@@ -25,7 +26,17 @@ export const changeSnakeSpeedControl = (value) => ({
     value: value
 })
 
-export const snakeGo = () => ({ type: types.SNAKE_GO });
+export const snakeGoBefore = () => ({ type: types.SNAKE_GO_BEFORE });
+export const snakeGo = (value) => ({
+    type: types.SNAKE_GO,
+    value: value
+});
+export const eatFood = () => ({ type: types.EAT_FOOD });
+export const createFood = (value) => ({
+    type: types.CREATE_FOOD,
+    value: value
+});
+
 export const changeDirection = (value) => ({
     type: types.CHANGE_DIRECTION,
     value: value

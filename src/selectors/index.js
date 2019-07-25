@@ -1,5 +1,10 @@
-export const snakeSpeedValue = (state) => state.snake.speedValue;
+export const snakeSpeedValue = (state) => Number(state.snake.speedValue);
 export const gameStatus = (state) => state.game.status;
 export const snakeData = (state) => state.snake.data;
-export const gridRowNumControl = (state) => state.control.gridRowNum;
-export const gridColNumControl = (state) => state.control.gridColNum;
+export const snakeHead = (state) => Number(state.snake.data[state.snake.data.length-1]);
+export const snakeDirection = (state) => state.snake.direction;
+export const gridRowNumControl = (state) => Number(state.control.gridRowNum);
+export const gridColNumControl = (state) => Number(state.control.gridColNum);
+export const gridRowNum = (state) => Number(state.board.gridRowNum);
+export const gridColNum = (state) => Number(state.board.gridColNum);
+export const foodData = (state) => Number(state.food.data);

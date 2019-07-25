@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { snakeGo } from '../actions';
+import { snakeGoBefore } from '../actions';
 
 class SnakeTimer extends React.Component {
 
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSnakeGo: () => {dispatch(snakeGo())},
+        onSnakeGo: () => {dispatch(snakeGoBefore())},
     }
 }
 

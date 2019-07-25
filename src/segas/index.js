@@ -1,8 +1,10 @@
 import { call, delay, put, select, all, takeEvery } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { restartGameWithFood, resetGameWithFood } from '../actions';
+import { restartGameWithFood, resetGameWithFood, overGame, snakeGo, eatFood, createFood } from '../actions';
 import * as selectors from '../selectors';
 import { getRandomInt } from '../utils';
+import { RUNNING, STOPPED, OVER } from '../constants/GameStatus';
+import { LEFT, RIGHT, UP, DOWN } from "../constants/Directions";
 
 function getFoodData(gridRowNum, gridColNum, snakeData) {
     const squareNums = gridRowNum * gridColNum;
@@ -12,6 +14,7 @@ function getFoodData(gridRowNum, gridColNum, snakeData) {
 }
 
 function* restartGameSaga(action) {
+    // TODO to be template
     const gridRowNum = yield select(selectors.gridRowNumControl);
     const gridColNum = yield select(selectors.gridColNumControl);
     const snakeData = yield select(selectors.snakeData);
@@ -23,8 +26,8 @@ function* watchRestartGame() {
 }
 
 function* resetGameSaga(action) {
-    const gridRowNum = yield select(selectors.gridRowNumControl);
-    const gridColNum = yield select(selectors.gridColNumControl);
+    const gridRowNum = yield select(selectors.gridRowNum);
+    const gridColNum = yield select(selectors.gridColNum);
     const snakeData = yield select(selectors.snakeData);
     yield put(resetGameWithFood(getFoodData(gridRowNum, gridColNum, snakeData)));
 }
@@ -33,10 +36,63 @@ function* watchResetGame() {
     yield takeEvery(types.RESET_GAME, resetGameSaga)
 }
 
+function* watchSnakeGo() {
+    yield takeEvery(types.SNAKE_GO_BEFORE, snakeGoBefore)
+}
+
+function* snakeGoBefore(action) {
+
+    const gameStatus = yield select(selectors.gameStatus);
+    if (gameStatus === RUNNING) {
+        const gridRowNum = yield select(selectors.gridRowNum);
+        const gridColNum = yield select(selectors.gridColNum);
+        const gridNum = gridRowNum * gridColNum;
+        const snakeDirection = yield select(selectors.snakeDirection);
+        const snakeData = yield select(selectors.snakeData);
+        const snakeHead = yield select(selectors.snakeHead);
+        let hitFlag = false;
+        let nextGrid = snakeHead;
+        switch (snakeDirection) {
+            case UP:
+                nextGrid = snakeHead - gridColNum;
+                if (nextGrid < 0) hitFlag = true;
+                break;
+            case DOWN:
+                nextGrid = snakeHead + gridColNum;
+                if (nextGrid > gridNum) hitFlag = true;
+                break;
+            case LEFT:
+                if (snakeHead % gridColNum === 0) hitFlag = true;
+                nextGrid = snakeHead - 1;
+                break;
+            case RIGHT:
+                nextGrid = snakeHead + 1;
+                if (nextGrid % gridColNum === 0) hitFlag = true;
+                break;
+            default :
+                break;
+        }
+        if (snakeData.includes(nextGrid)) hitFlag = true;
+
+        if (hitFlag) {
+            yield put(overGame());
+        } else {
+            const foodData = yield select(selectors.foodData);
+            if (nextGrid === foodData) {
+                yield put(eatFood());
+                yield put(createFood(getFoodData(gridRowNum, gridColNum, snakeData)));
+            } else {
+                yield put(snakeGo(nextGrid));
+            }
+        }
+    }
+}
+
 export default function* rootSaga() {
     yield all([
         watchRestartGame(),
-        watchResetGame()
+        watchResetGame(),
+        watchSnakeGo()
     ])
 }
 
