@@ -83,7 +83,7 @@ function* createFoodSaga(action) {
     const squareNums = gridRowNum * gridColNum;
     const squareArr = [...Array(squareNums).keys()];
     const foodArr = squareArr.filter((i)=>{return !snakeData.includes(i)});
-    yield put(createFoodWithData(getRandomInt(0, foodArr.length)));
+    yield put(createFoodWithData(foodArr[getRandomInt(0, foodArr.length-1)]));
 }
 
 function* watchCreateFood() {

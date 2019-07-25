@@ -16,7 +16,7 @@ export function getInitialState() {
         },
         snake: {
             direction: directions.RIGHT,
-            data: [0, 1, 2],
+            data: [...Array(3).keys()],
             speedValue: 500 // match speedOptions index, it is level
         },
         control: {
