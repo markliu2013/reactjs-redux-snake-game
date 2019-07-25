@@ -61,6 +61,7 @@ function* snakeGoSaga(action) {
             default :
                 break;
         }
+        // can not hit yourself
         if (snakeData.includes(nextGrid)) hitFlag = true;
         if (hitFlag) {
             yield put(overGame());

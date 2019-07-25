@@ -14,7 +14,7 @@ const Board = ({ gridRowNum, gridColNum, snakeData, foodData }) => {
         <div className="boardWrapper">
             <div className="boardGrid" style={gridTemplateStyle}>
                 { Array(squareNums).fill().map((_, i) => {
-                    return (<Square key={i} isSnakeOn={snakeData.includes(i)} isFoodOn={i === foodData} />)
+                    return (<Square key={i} isSnakeHead={i===snakeData[snakeData.length-1]} isSnakeOn={snakeData.includes(i)} isFoodOn={i === foodData} />)
                 })}
             </div>
         </div>

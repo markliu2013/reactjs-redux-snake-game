@@ -43,6 +43,9 @@ a:hover {
 .boardWrapper .square.onSnake {
     background: #000;
 }
+.boardWrapper .square.onSnake.snakeHead {
+    background: #a00;
+}
 .boardWrapper .square.onFood {
     background: #0a0;
 }
