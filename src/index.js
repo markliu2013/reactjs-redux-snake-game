@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger'
 import Game from './containers/Game';
 import reducer from './reducers';
-import sega from './segas';
+import sega from './sagas';
 import './index.css';
 
 const sagaMiddleware = createSagaMiddleware();
