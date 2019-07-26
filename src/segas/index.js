@@ -102,7 +102,10 @@ function* watchSaveState() {
 
 function* loadStateSaga(action) {
     const json = yield call(loadState);
-    yield put(loadStateWithData(json));
+    console.log(json);
+    if (json) {
+        yield put(loadStateWithData(json));
+    }
 }
 
 function* watchLoadState() {

@@ -127,7 +127,7 @@ export default function rootReducer(state = initialState, action) {
             return nextState;
         }
         case actionTypes.LOAD_STATE_WITH_DATA: {
-            return action.value;
+            return Object.assign({}, state, action.value);
         }
         default:
             return state
