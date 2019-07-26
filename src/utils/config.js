@@ -17,7 +17,7 @@ game: {
 snake: {
     direction: directions.RIGHT,
     data: [...Array(3).keys()],
-    speedValue: 500 // match speedOptions index, it is level
+    speedValue: 500
 },
 control: {
     gridColNum: 30,
