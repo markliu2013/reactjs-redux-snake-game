@@ -1,5 +1,6 @@
 export const stateJson = (state) => JSON.stringify(state);
 export const snakeSpeedValue = (state) => Number(state.snake.speedValue);
+export const snakeCanHitSelfValue = (state) => Boolean(state.snake.canHitSelf);
 export const gameStatus = (state) => state.game.status;
 export const snakeData = (state) => state.snake.data;
 export const snakeHead = (state) => Number(state.snake.data[state.snake.data.length-1]);

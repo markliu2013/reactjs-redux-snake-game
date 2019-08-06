@@ -11,15 +11,19 @@ export const reviveGame = () => ({ type: types.REVIVE_GAME });
 export const changeGridRowNumControl = (value) => ({
     type: types.CHANGE_GRID_ROW_NUM,
     value: value
-})
+});
 export const changeGridColNumControl = (value) => ({
     type: types.CHANGE_GRID_COL_NUM,
     value: value
-})
+});
 export const changeSnakeSpeedControl = (value) => ({
     type: types.CHANGE_SNAKE_SPEED,
     value: value
-})
+});
+export const changeSnakeCanHitSelfControl = (value) => ({
+    type: types.CHANGE_SNAKE_CAN_HIT_SELF,
+    value: value
+});
 
 export const snakeGo = () => ({ type: types.SNAKE_GO });
 export const snakeGoWithData = (value) => ({

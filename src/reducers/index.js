@@ -14,6 +14,7 @@ export default function rootReducer(state = initialState, action) {
             nextState.board.gridColNum = state.control.gridColNum;
             nextState.board.gridRowNum = state.control.gridRowNum;
             nextState.snake.speedValue = state.control.snakeSpeedValue;
+            nextState.snake.canHitSelf = state.control.snakeCanHitSelf;
             nextState.snake.data = initialState.snake.data;
             nextState.snake.direction = initialState.snake.direction;
             nextState.game.status = RUNNING;
@@ -79,7 +80,6 @@ export default function rootReducer(state = initialState, action) {
             return nextState;
         }
         case actionTypes.CHANGE_GRID_ROW_NUM: {
-            // TODO shallow? deep?
             let nextState = Object.assign({}, state);
             nextState.control.gridRowNum = action.value;
             return nextState;
@@ -92,6 +92,11 @@ export default function rootReducer(state = initialState, action) {
         case actionTypes.CHANGE_SNAKE_SPEED: {
             let nextState = Object.assign({}, state);
             nextState.control.snakeSpeedValue = action.value;
+            return nextState;
+        }
+        case actionTypes.CHANGE_SNAKE_CAN_HIT_SELF: {
+            let nextState = Object.assign({}, state);
+            nextState.control.snakeCanHitSelf = action.value;
             return nextState;
         }
         case actionTypes.SNAKE_GO_WITH_DATA: {

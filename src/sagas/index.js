@@ -38,6 +38,7 @@ function* snakeGoSaga(action) {
         const snakeDirection = yield select(selectors.snakeDirection);
         const snakeData = yield select(selectors.snakeData);
         const snakeHead = yield select(selectors.snakeHead);
+        const snakeCanHitSelfValue = yield select(selectors.snakeCanHitSelfValue);
         let hitFlag = false;
         let nextGrid = snakeHead;
         switch (snakeDirection) {
@@ -61,8 +62,10 @@ function* snakeGoSaga(action) {
             default :
                 break;
         }
-        // can not hit yourself
-        if (snakeData.includes(nextGrid)) hitFlag = true;
+        // check if hit self
+        if (!snakeCanHitSelfValue && snakeData.includes(nextGrid)) {
+            hitFlag = true;
+        }
         if (hitFlag) {
             yield put(overGame());
         } else {

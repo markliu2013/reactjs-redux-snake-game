@@ -70,7 +70,7 @@ a:hover {
 .gameInitControl > div {
     display: inline-block;
     margin-bottom: 10px;
-    min-width: 50%;
+    margin-left: 5px;
 }
 .gameInitControl select {
     margin-right: 5px;
