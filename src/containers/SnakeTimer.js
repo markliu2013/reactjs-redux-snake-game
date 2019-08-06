@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { snakeGo } from '../actions';
-
+// replaced by redux saga
 class SnakeTimer extends React.Component {
 
     setTimer() {
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSnakeGo: () => {dispatch(snakeGo())},
+        onSnakeGo: () => { dispatch(snakeGo()) },
     }
 }
 

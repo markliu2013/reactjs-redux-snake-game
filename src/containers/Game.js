@@ -26,7 +26,6 @@ class Game extends React.Component {
             <div className="gameWrapper">
                 <BoardContainer />
                 <ControlPanelContainer />
-                <SnakeTimer />
             </div>
         )
     }

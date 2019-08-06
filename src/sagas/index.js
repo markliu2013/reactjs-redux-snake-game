@@ -1,6 +1,6 @@
-import { call, delay, put, select, all, takeEvery } from 'redux-saga/effects';
+import { call, delay, put, select, all, takeEvery, fork } from 'redux-saga/effects';
 import * as types from '../constants/ActionTypes';
-import { restartGameBefore, resetGameBefore, overGame, snakeGoWithData, eatFood, createFood, createFoodWithData, loadStateWithData } from '../actions';
+import { restartGameBefore, resetGameBefore, overGame, snakeGo, snakeGoWithData, eatFood, createFood, createFoodWithData, loadStateWithData } from '../actions';
 import * as selectors from '../selectors';
 import { getRandomInt } from '../utils';
 import { RUNNING, STOPPED, OVER } from '../constants/GameStatus';
@@ -114,6 +114,14 @@ function* watchLoadState() {
     yield takeEvery(types.LOAD_STATE, loadStateSaga)
 }
 
+function* snakeGoTimer() {
+    while (true) {
+        let snakeSpeedValue = yield select(selectors.snakeSpeedValue);
+        yield put(snakeGo());
+        yield delay(snakeSpeedValue);
+    }
+}
+
 export default function* rootSaga() {
     yield all([
         watchRestartGame(),
@@ -121,18 +129,7 @@ export default function* rootSaga() {
         watchSnakeGo(),
         watchCreateFood(),
         watchSaveState(),
-        watchLoadState()
-    ])
+        watchLoadState(),
+        snakeGoTimer()
+    ]);
 }
-
-//export default function* rootSaga() {
-//    while (true) {
-//        let gameStatus = yield select(selectors.gameStatus);
-//        let snakeSpeedValue = yield select(selectors.snakeSpeedValue);
-//        console.log(gameStatus);
-//        if (gameStatus === RUNNING) {
-//            yield put(snakeGo());
-//        }
-//        yield delay(snakeSpeedValue);
-//    }
-//}
