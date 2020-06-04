@@ -10,7 +10,7 @@ import sega from './sagas';
 import './index.css';
 
 const sagaMiddleware = createSagaMiddleware();
-const loggerMiddleware = createLogger()
+const loggerMiddleware = createLogger();
 
 const store = createStore(
     reducer,
