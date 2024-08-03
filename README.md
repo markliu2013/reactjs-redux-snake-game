@@ -1,6 +1,5 @@
 # ReactJS Redux Snake Game
-This project is snake game using ReactJS, Redux, redux-saga. The result is almost the same with
-[http://demo.jiukuaitech.com/reactjs-redux-snake-game/index.html](http://demo.zfwhub.com/snake/code/index.html).
+
 I just re-build [https://github.com/markliu2013/snake/](https://github.com/markliu2013/snake/) using Redux.
 
 ## Installing
